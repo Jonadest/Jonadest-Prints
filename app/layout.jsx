@@ -11,52 +11,42 @@ const montserrat = Montserrat({
     variable: '--font-montserrat',
 });
 
+const baseUrl = 'https://jonadestprints.com'; // ✅ IMPORTANT
+
 export const metadata = {
-    // Basic Meta Tags
     title: 'Jonadest Prints - Premium Printing Services',
     description:
         'Get premium quality printing services for your business. Business cards, flyers, large format printing, apparel, stickers and more. Request a quote today!',
 
-    // Canonical URL
-    metadataBase: new URL('https://jonadestprints.com'), // Replace with your actual domain
+    metadataBase: new URL(baseUrl),
 
-    // Open Graph (Facebook, LinkedIn, etc.)
     openGraph: {
         title: 'Jonadest Prints - Premium Printing Services',
         description:
-            'Get premium quality printing services for your business. Business cards, flyers, large format printing, apparel, stickers and more. Request a quote today!',
-        url: 'https://jonadestprints.com', // Replace with your actual domain
+            'Get premium quality printing services for your business. Business cards, flyers, large format printing, apparel, stickers and more.',
+        url: baseUrl,
         siteName: 'Jonadest Prints',
         images: [
             {
-                url: '/tshirts.jpg', // Your image path in public folder
+                url: `${baseUrl}/og-image.jpg`, // ✅ MUST be absolute
                 width: 1200,
                 height: 630,
-                alt: 'Jonadest Prints - Custom T-Shirt Printing',
+                alt: 'Jonadest Prints - Premium Printing Services',
             },
         ],
         locale: 'en_US',
         type: 'website',
     },
 
-    // Twitter Card
     twitter: {
         card: 'summary_large_image',
         title: 'Jonadest Prints - Premium Printing Services',
         description:
-            'Get premium quality printing services for your business. Business cards, flyers, large format printing and more. Request a quote today!',
-        images: [
-            {
-                url: '/og-image.png', // This will use the generated image
-                width: 1200,
-                height: 630,
-                alt: 'Jonadest Prints - Premium Printing Services',
-            },
-        ], // Your image path
-        creator: '@jonadestprints', // Optional: your Twitter handle
+            'Get premium quality printing services for your business. Business cards, flyers, large format printing and more.',
+        images: [`${baseUrl}/og-image.jpg`], // ✅ absolute URL
+        creator: '@jonadestprints',
     },
 
-    // Additional Meta Tags
     robots: {
         index: true,
         follow: true,
@@ -68,11 +58,6 @@ export const metadata = {
             'max-snippet': -1,
         },
     },
-
-    // Verification (optional - add when you set these up)
-    // verification: {
-    //     google: 'your-google-verification-code',
-    // },
 
     viewport: {
         width: 'device-width',
