@@ -18,8 +18,8 @@ const montserrat = Montserrat({
     display: 'swap',
 });
 
-// ✅ Domain - Replace with your actual domain
-const baseUrl = 'https://jonadest-prints.vercel.app/';
+// ✅ Domain - Remove trailing slash
+const baseUrl = 'https://jonadest-prints.vercel.app';
 
 export const metadata = {
     title: 'Jonadest Prints | Premium Printing Services',
@@ -51,10 +51,17 @@ export const metadata = {
         siteName: 'Jonadest Prints',
         images: [
             {
-                url: '/og-image.jpg', // ✅ stored in public/
+                url: '/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Jonadest Prints - Custom T-Shirt Printing',
+                alt: 'Jonadest Prints - Premium Printing Services',
+            },
+            // Add a square image specifically for WhatsApp
+            {
+                url: '/og-image-square.jpg', // Square version for WhatsApp
+                width: 600,
+                height: 600,
+                alt: 'Jonadest Prints - Premium Printing Services',
             },
         ],
         locale: 'en_US',
@@ -66,7 +73,7 @@ export const metadata = {
         description:
             'Premium quality printing services for your business. Business cards, flyers, large format, apparel, and more. Request a quote today!',
         images: ['/og-image.jpg'],
-        creator: '@jonadestprints', // Optional: your Twitter handle
+        creator: '@jonadestprints',
     },
     alternates: {
         canonical: baseUrl,
@@ -101,22 +108,55 @@ export default function RootLayout({ children }) {
                     name="apple-mobile-web-app-title"
                     content="Jonadest Prints"
                 />
-                <link rel="apple-touch-icon" href="/icon-192x192.png" />
 
-                {/* Favicon */}
-                <link rel="icon" href="/favicon.ico" sizes="any" />
-                <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-                <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+                {/* Favicon - Multiple sizes */}
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="192x192"
+                    href="/icon-192x192.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="512x512"
+                    href="/icon-512x512.png"
+                />
 
-                {/* Manifest for PWA (optional) */}
+                {/* Manifest for PWA */}
                 <link rel="manifest" href="/manifest.json" />
+
+                {/* Force WhatsApp to use og:image instead of favicon */}
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/jpeg" />
+
+                {/* Additional meta for WhatsApp */}
+                <meta
+                    property="og:image:alt"
+                    content="Jonadest Prints - Premium Printing Services"
+                />
             </head>
             <body className="flex flex-col min-h-screen antialiased">
-                {/* Header/Navigation can go here */}
-
                 <main className="flex-grow relative z-0">{children}</main>
-
-                {/* Footer can go here */}
             </body>
         </html>
     );
