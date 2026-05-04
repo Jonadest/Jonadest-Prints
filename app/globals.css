@@ -58,3 +58,26 @@ textarea {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+.fire-bg {
+  animation: flameWobble 6s infinite linear;
+}
+
+@keyframes flameWobble {
+  0%{
+      filter:blur(2px);
+       opacity: 0;
+  }
+ 
+  10%{
+      filter:blur(0px);
+  }
+   20%{
+     
+       opacity: 1;
+  }
+100% {
+  transform: scale(1,1.2) translate(0, -30px) rotate(-2deg);
+    opacity: 0;
+}
+}

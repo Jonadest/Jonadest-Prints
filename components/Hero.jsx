@@ -7,7 +7,7 @@ export default function Hero({ onOpenModal }) {
             {/* Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <div
-                    className="absolute inset-0 bg-cover bg-center"
+                    className="absolute inset-0 bg-cover bg-center fire-bg "
                     style={{ backgroundImage: "url('/hero2.jpg')" }}
                 />
 
@@ -38,14 +38,17 @@ export default function Hero({ onOpenModal }) {
                     <div className="flex gap-4 flex-wrap">
                         <Link
                             href="/quote"
-                            className="inline-block bg-white text-black px-2 py-2 md:px-6 md:py-3 uppercase font-semibold hover:bg-gray-light transition-colors"
+                            className="inline-block bg-white text-black px-2 py-2 md:px-6 md:py-3 uppercase font-semibold 
+  transition-all duration-300 ease-in-out 
+  hover:bg-gray-200 hover:scale-105"
                         >
                             Request a Quote
                         </Link>
 
                         <a
                             href="#services"
-                            className="border-2 border-white px-2 py-2 md:px-6 md:py-3 uppercase"
+                            className="border-2 border-white px-2 py-2 md:px-6 md:py-3 uppercase transition-all duration-300 ease-in-out 
+                             hover:scale-105"
                         >
                             Our Services
                         </a>

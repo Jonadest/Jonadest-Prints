@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import products from '@/app/products';
 
 export default function QuotePage() {
     const router = useRouter();
@@ -136,22 +137,34 @@ export default function QuotePage() {
 
     if (isSubmitted) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center px-4">
-                <div className="text-center">
+            <div className="relative min-h-screen flex items-center justify-center px-4">
+                {/* Background Image with Glass Effect */}
+                <div className="absolute inset-0 z-0">
+                    <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+                        style={{
+                            backgroundImage: "url('/services.jpg')",
+                        }}
+                    ></div>
+                    <div className="absolute inset-0 bg-black/70 backdrop-blur-xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-transparent to-black/90"></div>
+                </div>
+
+                <div className="relative z-10 text-center">
                     <div className="text-6xl mb-6">✓</div>
-                    <h1 className="font-display text-3xl sm:text-4xl font-bold mb-4">
+                    <h1 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-white drop-shadow-2xl">
                         Quote Request Sent!
                     </h1>
-                    <p className="text-gray-medium mb-2">
+                    <p className="text-gray-medium mb-2 drop-shadow-lg">
                         Thank you, {formData.fullName}!
                     </p>
-                    <p className="text-gray-medium mb-8">
+                    <p className="text-gray-medium mb-8 drop-shadow-lg">
                         We'll review your request and get back to you within 24
                         hours.
                     </p>
                     <Link
                         href="/"
-                        className="inline-block bg-white text-black px-8 py-3 font-semibold hover:bg-gray-light transition-colors"
+                        className="inline-block bg-white text-black px-8 py-3 font-semibold hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                         Return to Home
                     </Link>
@@ -161,16 +174,29 @@ export default function QuotePage() {
     }
 
     return (
-        <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto">
+        <div className="relative min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+            {/* Background Image with Glass Effect */}
+            <div className="absolute inset-0 z-0">
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+                    style={{
+                        backgroundImage: "url('/services.jpg')",
+                    }}
+                ></div>
+                {/* Multiple layers for frosted glass effect */}
+                <div className="absolute inset-0 bg-black/70 backdrop-blur-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-transparent to-black/90"></div>
+            </div>
+
+            <div className="relative z-10 max-w-3xl mx-auto">
                 {/* Header with back button */}
                 <div className="mb-8">
                     <Link
                         href="/"
-                        className="inline-flex items-center text-gray-medium hover:text-white transition-colors mb-4"
+                        className="inline-flex items-center text-gray-300 hover:text-white transition-colors mb-4 group"
                     >
                         <svg
-                            className="w-5 h-5 mr-2"
+                            className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:-translate-x-1"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -184,21 +210,24 @@ export default function QuotePage() {
                         </svg>
                         Back to Home
                     </Link>
-                    <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+                    <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4 text-white drop-shadow-2xl">
                         Get a Quote
                     </h1>
-                    <p className="text-gray-medium text-lg">
+                    <p className="text-gray-300 text-lg drop-shadow-lg">
                         Fill out the form below and we'll provide a custom quote
                         for your project.
                     </p>
                 </div>
 
-                {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Form with glass card */}
+                <form
+                    onSubmit={handleSubmit}
+                    className="space-y-6 backdrop-blur-md bg-white/5 border border-white/10 rounded-lg p-8 shadow-2xl"
+                >
                     {/* Contact Information */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Full Name *
                             </label>
                             <input
@@ -207,12 +236,12 @@ export default function QuotePage() {
                                 value={formData.fullName}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg placeholder-gray-500"
                                 placeholder="John Doe"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Email Address *
                             </label>
                             <input
@@ -221,7 +250,7 @@ export default function QuotePage() {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg placeholder-gray-500"
                                 placeholder="john@example.com"
                             />
                         </div>
@@ -229,7 +258,7 @@ export default function QuotePage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Phone Number *
                             </label>
                             <input
@@ -238,12 +267,12 @@ export default function QuotePage() {
                                 value={formData.phone}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg placeholder-gray-500"
                                 placeholder="+1 (555) 000-0000"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Address
                             </label>
                             <input
@@ -251,15 +280,15 @@ export default function QuotePage() {
                                 name="address"
                                 value={formData.address}
                                 onChange={handleChange}
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg placeholder-gray-500"
                                 placeholder="Your delivery address"
                             />
                         </div>
                     </div>
 
-                    {/* Product Details */}
+                    {/* Product Details - Updated with mapped products */}
                     <div>
-                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                             Product Type *
                         </label>
                         <select
@@ -267,28 +296,26 @@ export default function QuotePage() {
                             value={formData.productType}
                             onChange={handleChange}
                             required
-                            className="w-full bg-black border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                            className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg"
                         >
-                            <option value="">Select a product...</option>
-                            <option value="business-cards">
-                                Business Cards
+                            <option value="" className="bg-black">
+                                Select a product...
                             </option>
-                            <option value="flyers">Flyers & Brochures</option>
-                            <option value="booklets">
-                                Booklets & Catalogs
-                            </option>
-                            <option value="stickers">Stickers & Labels</option>
-                            <option value="large-format">
-                                Large Format Printing
-                            </option>
-                            <option value="packaging">Packaging Design</option>
-                            <option value="other">Other / Custom</option>
+                            {products.map((product) => (
+                                <option
+                                    key={product.id}
+                                    value={product.id}
+                                    className="bg-black"
+                                >
+                                    {product.name}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Quantity *
                             </label>
                             <input
@@ -297,12 +324,12 @@ export default function QuotePage() {
                                 value={formData.quantity}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg placeholder-gray-500"
                                 placeholder="e.g., 500, 1,000, 5,000"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                            <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                                 Needed By *
                             </label>
                             <input
@@ -311,13 +338,13 @@ export default function QuotePage() {
                                 value={formData.deadline}
                                 onChange={handleChange}
                                 required
-                                className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors [color-scheme:dark]"
+                                className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 rounded-lg [color-scheme:dark]"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                             Project Description
                         </label>
                         <textarea
@@ -325,27 +352,27 @@ export default function QuotePage() {
                             value={formData.description}
                             onChange={handleChange}
                             rows={4}
-                            className="w-full bg-transparent border-2 border-gray-dark focus:border-white outline-none px-4 py-3 text-white transition-colors resize-none"
+                            className="w-full bg-black/40 backdrop-blur-sm border-2 border-white/20 focus:border-white outline-none px-4 py-3 text-white transition-all duration-300 resize-none rounded-lg placeholder-gray-500"
                             placeholder="Tell us about your project, including any specific requirements, colors, dimensions, etc."
                         ></textarea>
                     </div>
 
                     {/* File Upload Section */}
                     <div>
-                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider">
+                        <label className="block text-sm font-medium mb-2 uppercase tracking-wider text-gray-300">
                             Upload Design or Sample (Optional)
                         </label>
-                        <p className="text-gray-medium text-sm mb-3">
+                        <p className="text-gray-400 text-sm mb-3">
                             Accepted formats: PDF, JPG, PNG, GIF, WebP, SVG (Max
                             10MB)
                         </p>
 
                         {!file ? (
                             <div
-                                className={`border-2 border-dashed p-8 text-center transition-all duration-300 cursor-pointer ${
+                                className={`border-2 border-dashed p-8 text-center transition-all duration-300 cursor-pointer rounded-lg ${
                                     dragActive
-                                        ? 'border-white bg-white/5'
-                                        : 'border-gray-dark hover:border-gray-medium'
+                                        ? 'border-white bg-white/10 backdrop-blur-md'
+                                        : 'border-white/20 hover:border-white/50 bg-black/20 backdrop-blur-sm'
                                 }`}
                                 onDragEnter={handleDrag}
                                 onDragLeave={handleDrag}
@@ -354,11 +381,11 @@ export default function QuotePage() {
                                 onClick={() => fileInputRef.current?.click()}
                             >
                                 <div className="text-4xl mb-3">📁</div>
-                                <p className="text-gray-medium mb-2">
+                                <p className="text-gray-300 mb-2">
                                     Drag & drop your file here, or click to
                                     browse
                                 </p>
-                                <p className="text-gray-medium text-sm">
+                                <p className="text-gray-400 text-sm">
                                     PDF or Image files only
                                 </p>
                                 <input
@@ -371,11 +398,11 @@ export default function QuotePage() {
                                 />
                             </div>
                         ) : (
-                            <div className="border-2 border-white p-4">
+                            <div className="border-2 border-white/30 bg-black/20 backdrop-blur-sm p-4 rounded-lg">
                                 <div className="flex items-start justify-between">
                                     <div className="flex items-center space-x-4">
                                         {filePreview ? (
-                                            <div className="w-16 h-16 border border-gray-dark overflow-hidden flex-shrink-0">
+                                            <div className="w-16 h-16 border border-white/20 rounded-lg overflow-hidden flex-shrink-0">
                                                 <img
                                                     src={filePreview}
                                                     alt="Preview"
@@ -383,7 +410,7 @@ export default function QuotePage() {
                                                 />
                                             </div>
                                         ) : (
-                                            <div className="w-16 h-16 border border-gray-dark flex items-center justify-center flex-shrink-0">
+                                            <div className="w-16 h-16 border border-white/20 rounded-lg flex items-center justify-center flex-shrink-0 bg-black/40">
                                                 <span className="text-2xl">
                                                     📄
                                                 </span>
@@ -393,7 +420,7 @@ export default function QuotePage() {
                                             <p className="text-white font-medium text-sm truncate max-w-[200px] sm:max-w-[300px]">
                                                 {file.name}
                                             </p>
-                                            <p className="text-gray-medium text-xs mt-1">
+                                            <p className="text-gray-400 text-xs mt-1">
                                                 {(
                                                     file.size /
                                                     (1024 * 1024)
@@ -405,7 +432,7 @@ export default function QuotePage() {
                                     <button
                                         type="button"
                                         onClick={removeFile}
-                                        className="text-gray-medium hover:text-white transition-colors ml-2 flex-shrink-0"
+                                        className="text-gray-400 hover:text-white transition-colors ml-2 flex-shrink-0"
                                     >
                                         <svg
                                             className="w-5 h-5"
@@ -429,7 +456,7 @@ export default function QuotePage() {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-white text-black py-4 font-semibold text-base uppercase tracking-wider hover:bg-gray-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-white text-black py-4 font-semibold text-base uppercase tracking-wider hover:bg-gray-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg shadow-lg hover:shadow-xl backdrop-blur-sm"
                     >
                         {isSubmitting ? 'Sending...' : 'Submit Quote Request'}
                     </button>
