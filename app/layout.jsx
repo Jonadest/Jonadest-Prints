@@ -12,9 +12,60 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+    // Basic Meta Tags
     title: 'Jonadest Prints - Premium Printing Services',
     description:
-        'Get premium quality printing services for your business. Business cards, flyers, large format printing and more. Request a quote today!',
+        'Get premium quality printing services for your business. Business cards, flyers, large format printing, apparel, stickers and more. Request a quote today!',
+
+    // Canonical URL
+    metadataBase: new URL('https://jonadestprints.com'), // Replace with your actual domain
+
+    // Open Graph (Facebook, LinkedIn, etc.)
+    openGraph: {
+        title: 'Jonadest Prints - Premium Printing Services',
+        description:
+            'Get premium quality printing services for your business. Business cards, flyers, large format printing, apparel, stickers and more. Request a quote today!',
+        url: 'https://jonadestprints.com', // Replace with your actual domain
+        siteName: 'Jonadest Prints',
+        images: [
+            {
+                url: '/tshirts.jpg', // Your image path in public folder
+                width: 1200,
+                height: 630,
+                alt: 'Jonadest Prints - Custom T-Shirt Printing',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+
+    // Twitter Card
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Jonadest Prints - Premium Printing Services',
+        description:
+            'Get premium quality printing services for your business. Business cards, flyers, large format printing and more. Request a quote today!',
+        images: ['/tshirts.jpg'], // Your image path
+        creator: '@jonadestprints', // Optional: your Twitter handle
+    },
+
+    // Additional Meta Tags
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+
+    // Verification (optional - add when you set these up)
+    // verification: {
+    //     google: 'your-google-verification-code',
+    // },
 
     viewport: {
         width: 'device-width',
