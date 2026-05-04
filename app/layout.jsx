@@ -45,7 +45,14 @@ export const metadata = {
         title: 'Jonadest Prints - Premium Printing Services',
         description:
             'Get premium quality printing services for your business. Business cards, flyers, large format printing and more. Request a quote today!',
-        images: ['/tshirts.jpg'], // Your image path
+        images: [
+            {
+                url: '/og-image.png', // This will use the generated image
+                width: 1200,
+                height: 630,
+                alt: 'Jonadest Prints - Premium Printing Services',
+            },
+        ], // Your image path
         creator: '@jonadestprints', // Optional: your Twitter handle
     },
 
