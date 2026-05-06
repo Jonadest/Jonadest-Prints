@@ -22,7 +22,7 @@ const montserrat = Montserrat({
 const baseUrl = 'https://jonadest-prints.vercel.app';
 
 // ✅ OG Image (ImageKit CDN)
-const ogImage = 'https://ik.imagekit.io/jonadest/og-image.jpg';
+const ogImage = 'https://ik.imagekit.io/jonadest/print-og-image.jpg';
 
 export const metadata = {
     title: 'Jonadest Prints | Premium Printing Services',
